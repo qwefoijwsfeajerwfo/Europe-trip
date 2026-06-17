@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Holiday Travel Package — Roman & Isaac</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#f4f1eb;color:#1a1a1a;font-size:15px;line-height:1.6}
+
+nav{position:sticky;top:0;z-index:50;background:#f4f1eb;border-bottom:1.5px solid #1a1a1a;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:52px}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:0.95rem;letter-spacing:-0.01em}
+.nav-links{display:flex;gap:0;list-style:none}
+.nav-links li{border-left:1.5px solid #1a1a1a}
+.nav-links a{display:block;padding:0 1rem;line-height:50px;font-size:0.68rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#1a1a1a;text-decoration:none;transition:background .15s}
+.nav-links a:hover{background:#1a1a1a;color:#f4f1eb}
+
+/* HERO */
+.hero{border-bottom:1.5px solid #1a1a1a;display:grid;grid-template-columns:1fr 1fr;min-height:92vh}
+.hero-left{padding:5rem 3rem;display:flex;flex-direction:column;justify-content:center;border-right:1.5px solid #1a1a1a}
+.hero-tag{display:inline-block;font-size:0.68rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:#1a1a1a;color:#f4f1eb;padding:4px 10px;margin-bottom:1.5rem}
+.hero-title{font-family:'Syne',sans-serif;font-size:clamp(3rem,7vw,6rem);font-weight:800;line-height:0.92;letter-spacing:-0.03em;margin-bottom:1.25rem}
+.hero-sub{font-size:1rem;color:#555;max-width:420px;line-height:1.65;margin-bottom:2rem}
+.hero-authors{font-size:0.72rem;color:#999;letter-spacing:0.08em;text-transform:uppercase;font-weight:600}
+.hero-right{display:grid;grid-template-columns:1fr 1fr;position:relative}
+.hero-img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-img-overlay{position:absolute;inset:0;background:rgba(244,241,235,0.08)}
+.stat-grid{position:absolute;bottom:0;left:0;right:0;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(244,241,235,0.95);border-top:1.5px solid #1a1a1a}
+.stat-box{padding:1.25rem 1rem;border-right:1.5px solid #1a1a1a}
+.stat-box:last-child{border-right:none}
+.stat-num{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;letter-spacing:-0.04em;line-height:1;margin-bottom:0.25rem}
+.stat-label{font-size:0.62rem;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;color:#777}
+
+/* SECTIONS */
+.section{border-bottom:1.5px solid #1a1a1a}
+.section-header{display:flex;align-items:baseline;gap:1.5rem;padding:1.75rem 3rem;border-bottom:1px solid #d0cac0}
+.section-num{font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#999;min-width:55px}
+.section-title{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;letter-spacing:-0.02em}
+.section-body{padding:2rem 3rem}
+
+/* DEST GRID */
+.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1.5px solid #1a1a1a;margin-bottom:2.5rem}
+.dest-col{padding:1.5rem 1.25rem;border-right:1.5px solid #1a1a1a}
+.dest-col:last-child{border-right:none}
+.dest-col-img{width:100%;height:100px;object-fit:cover;display:block;margin-bottom:1rem;border:1px solid #e0dbd2}
+.dest-col-num{font-size:0.62rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#999;margin-bottom:0.5rem}
+.dest-col-name{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:0.1rem}
+.dest-col-country{font-size:0.68rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:1rem}
+.dest-col-days{display:inline-block;font-size:0.62rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;background:#1a1a1a;color:#f4f1eb;padding:3px 7px;margin-bottom:0.9rem}
+.reason-list{list-style:none}
+.reason-list li{font-size:0.82rem;color:#444;padding:0.4rem 0;border-top:1px solid #e0dbd2;line-height:1.5}
+.reason-list li::before{content:'— ';color:#aaa}
+
+/* CLIMATE */
+.climate-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1.5px solid #1a1a1a;margin-bottom:2.5rem}
+.climate-item{padding:1.25rem;border-right:1.5px solid #1a1a1a}
+.climate-item:last-child{border-right:none}
+.climate-city{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;margin-bottom:0.3rem}
+.climate-best{font-size:0.65rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2a6b3e;margin-bottom:0.6rem}
+.climate-desc{font-size:0.82rem;color:#555;line-height:1.6}
+
+/* CURRENCY */
+.currency-row{display:grid;grid-template-columns:repeat(4,1fr);border:1.5px solid #1a1a1a;margin-bottom:2.5rem}
+.currency-item{padding:1.25rem;border-right:1.5px solid #1a1a1a}
+.currency-item:last-child{border-right:none}
+.currency-code{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:0.2rem}
+.currency-city{font-size:0.68rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:#777;margin-bottom:0.4rem}
+.currency-note{font-size:0.78rem;color:#555;line-height:1.5}
+
+/* FLIGHTS */
+.flights-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1rem}
+.flight-card{background:#fff;border:1.5px solid #1a1a1a;padding:1.5rem}
+.flight-badge{font-size:0.62rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:#1a1a1a;color:#f4f1eb;padding:3px 8px;margin-bottom:1rem;display:inline-block}
+.flight-route{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:0.2rem}
+.flight-airline{font-size:0.82rem;color:#666;margin-bottom:0.9rem}
+.flight-meta{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-bottom:0.9rem;padding-bottom:0.9rem;border-bottom:1px solid #e0dbd2}
+.flight-meta dt{font-size:0.62rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#999;margin-bottom:2px}
+.flight-meta dd{font-size:0.85rem;font-weight:500}
+.pro-con{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+.pro{font-size:0.78rem;line-height:1.5;color:#2a6b3e}
+.con{font-size:0.78rem;line-height:1.5;color:#8b2d1a}
+.pro::before{content:'✓ ';font-weight:700}
+.con::before{content:'✗ ';font-weight:700}
+
+/* DEST SEPARATOR */
+.dest-sep{display:flex;align-items:center;gap:1.5rem;padding:1.5rem 3rem;background:#1a1a1a;color:#f4f1eb}
+.dest-sep-name{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;letter-spacing:-0.02em}
+.dest-sep-meta{font-size:0.68rem;color:#777;letter-spacing:0.05em}
+
+/* CARDS */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+.card{background:#fff;border:1.5px solid #1a1a1a;overflow:hidden}
+.card-img{width:100%;height:140px;object-fit:cover;display:block;border-bottom:1.5px solid #1a1a1a}
+.card-inner{padding:1.25rem}
+.card-label{font-size:0.62rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#999;margin-bottom:0.5rem}
+.card-title{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:0.25rem}
+.card-price{font-size:0.78rem;font-weight:600;color:#1a1a1a;margin-bottom:0.75rem;padding-bottom:0.75rem;border-bottom:1px solid #e0dbd2}
+.card-body{font-size:0.84rem;color:#555;line-height:1.6}
+
+/* ACTIVITIES */
+.act-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1.5px solid #1a1a1a;margin-bottom:1.5rem}
+.act-item{padding:1.1rem;border-right:1.5px solid #1a1a1a;border-bottom:1.5px solid #1a1a1a}
+.act-item:nth-child(3n){border-right:none}
+.act-item:nth-last-child(-n+3){border-bottom:none}
+.act-img{width:100%;height:80px;object-fit:cover;display:block;margin-bottom:0.75rem;border:1px solid #e0dbd2}
+.act-name{font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:700;margin-bottom:0.15rem}
+.act-cost{font-size:0.65rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:#777;margin-bottom:0.5rem}
+.act-desc{font-size:0.78rem;color:#555;line-height:1.5}
+
+/* TRANSPORT */
+.transport-row{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid #1a1a1a;margin-bottom:2.5rem}
+.transport-item{padding:1.25rem;border-right:1.5px solid #1a1a1a}
+.transport-item:last-child{border-right:none}
+.transport-tag{font-size:0.62rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;background:#e8e3d9;padding:3px 8px;margin-bottom:0.6rem;display:inline-block}
+.transport-name{font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:0.2rem}
+.transport-cost{font-size:0.75rem;font-weight:600;color:#555;margin-bottom:0.7rem;padding-bottom:0.7rem;border-bottom:1px solid #e0dbd2}
+
+/* CONSIDERATIONS */
+.consider-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:1.5rem}
+.consider-card{background:#fff;border:1.5px solid #1a1a1a;padding:1.5rem}
+.consider-icon{font-size:1.4rem;margin-bottom:0.75rem}
+.consider-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:0.75rem}
+.consider-body{font-size:0.83rem;color:#444;line-height:1.7}
+.consider-body strong{color:#1a1a1a;font-weight:600}
+.finance-box{background:#1a1a1a;color:#f4f1eb;padding:2rem;margin-bottom:1rem}
+.finance-box-title{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:1.25rem}
+.finance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.finance-item dt{font-size:0.62rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#777;margin-bottom:0.5rem}
+.finance-item dd{font-size:0.82rem;color:#aaa;line-height:1.7}
+.finance-item dd strong{color:#f4f1eb;font-weight:600}
+
+/* ITINERARY */
+.day-table{width:100%;border-collapse:collapse;border:1.5px solid #1a1a1a}
+.day-table th{font-size:0.62rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#aaa;padding:0.75rem 1rem;text-align:left;background:#1a1a1a;border-bottom:1.5px solid #1a1a1a}
+.day-table td{padding:0.8rem 1rem;font-size:0.82rem;border-bottom:1px solid #e0dbd2;vertical-align:top}
+.day-table tr:last-child td{border-bottom:none}
+.day-table tr:hover td{background:#f9f7f3}
+.day-num{font-family:'Syne',sans-serif;font-weight:800;font-size:0.85rem;color:#aaa;white-space:nowrap}
+.day-loc{font-weight:600;font-size:0.88rem}
+.day-hotel{font-size:0.75rem;color:#888;margin-top:2px;font-style:italic}
+.day-acts{color:#444;line-height:1.5}
+.row-bcn{border-left:3px solid #c0392b}
+.row-rome{border-left:3px solid #8b5e3c}
+.row-swiss{border-left:3px solid #2980b9}
+.row-amsterdam{border-left:3px solid #27ae60}
+.row-transit{border-left:3px solid #999;background:#f9f7f3}
+
+/* MAP */
+.map-container{border:1.5px solid #1a1a1a;overflow:hidden;margin-bottom:2rem}
+.map-container iframe{width:100%;height:320px;border:none;display:block}
+
+/* BUDGET */
+.budget-table{width:100%;border-collapse:collapse;border:1.5px solid #1a1a1a;margin-bottom:1rem}
+.budget-table th{font-size:0.62rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#aaa;padding:0.75rem 1.25rem;text-align:left;background:#1a1a1a;border-bottom:1.5px solid #1a1a1a}
+.budget-table th:last-child{text-align:right}
+.budget-table td{padding:0.85rem 1.25rem;font-size:0.85rem;border-bottom:1px solid #e0dbd2;color:#444}
+.budget-table td:first-child{color:#1a1a1a;font-weight:500}
+.budget-table td:last-child{text-align:right;font-weight:600;font-family:'Syne',sans-serif;color:#1a1a1a}
+.budget-table tr:last-child td{border-bottom:none}
+.budget-total-row td{background:#1a1a1a;color:#f4f1eb!important;font-weight:700!important}
+.budget-remaining{background:#eaf6ef;border:1.5px solid #2a6b3e;padding:1rem 1.25rem;font-size:0.85rem;color:#2a6b3e;font-weight:600}
+
+/* BROCHURE */
+.brochure{border:1.5px solid #1a1a1a}
+.brochure-top{background:#1a1a1a;color:#f4f1eb;padding:3rem;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+.brochure-tag{font-size:0.62rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;background:#f4f1eb;color:#1a1a1a;padding:4px 10px;margin-bottom:1.25rem;display:inline-block}
+.brochure-title{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:800;line-height:0.9;letter-spacing:-0.03em;margin-bottom:1.25rem}
+.brochure-tagline{font-size:0.88rem;color:#aaa;line-height:1.7;max-width:360px}
+.brochure-img{width:100%;height:200px;object-fit:cover;display:block;border:1px solid #333}
+.brochure-body{display:grid;grid-template-columns:1fr 1fr;border-top:1.5px solid #1a1a1a}
+.brochure-left{padding:2rem;border-right:1.5px solid #1a1a1a}
+.brochure-right{padding:2rem}
+.brochure-sub{font-size:0.62rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#999;margin-bottom:1.25rem}
+.highlight-row{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid #e0dbd2}
+.highlight-row:last-child{border-bottom:none}
+.highlight-n{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:#ddd;min-width:2rem;line-height:1}
+.highlight-name{font-weight:600;font-size:0.88rem;margin-bottom:0.2rem}
+.highlight-desc{font-size:0.8rem;color:#555;line-height:1.5}
+.why-list{list-style:none}
+.why-list li{font-size:0.83rem;color:#444;padding:0.6rem 0;border-bottom:1px solid #e0dbd2;padding-left:1.1rem;position:relative;line-height:1.55}
+.why-list li:last-child{border-bottom:none}
+.why-list li::before{content:'→';position:absolute;left:0;color:#aaa}
+.brochure-footer{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-top:1.5px solid #1a1a1a;background:#f9f7f3}
+.brochure-cta{font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;font-style:italic}
+.brochure-meta{font-size:0.68rem;color:#888;text-align:right;line-height:1.8}
+
+footer{border-top:1.5px solid #1a1a1a;padding:1.25rem 3rem;display:flex;justify-content:space-between;align-items:center}
+footer span{font-size:0.72rem;color:#888}
+
+.sub-label{font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#999;margin-bottom:0.75rem;display:block}
+
+@media(max-width:900px){
+  nav{padding:0 1rem}.nav-links{display:none}
+  .hero{display:block}.hero-left{padding:3rem 1.5rem}
+  .section-body,.section-header,.dest-sep{padding:1.5rem}
+  .dest-grid,.climate-grid,.currency-row,.flights-grid,.two-col,.consider-grid,.finance-grid,.transport-row,.act-grid,.brochure-top,.brochure-body{display:block}
+  .act-item{border-right:none}
+  footer{flex-direction:column;gap:0.5rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Roman & Isaac — Europe</div>
+  <ul class="nav-links">
+    <li><a href="#destinations">Destinations</a></li>
+    <li><a href="#flights">Flights</a></li>
+    <li><a href="#accommodation">Stays</a></li>
+    <li><a href="#planning">Planning</a></li>
+    <li><a href="#itinerary">Itinerary</a></li>
+    <li><a href="#budget">Budget</a></li>
+    <li><a href="#brochure">Brochure</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <span class="hero-tag">Commerce Yr 10 — Holiday Travel Package</span>
+    <h1 class="hero-title">Europe<br>Trip</h1>
+    <p class="hero-sub">Madrid, Ibiza, Menorca, Barcelona, Amsterdam, Zurich and Rome. 20 days across seven cities in Europe, planned and budgeted within $50,000 AUD.</p>
+    <p class="hero-authors">Roman Iori & Isaac Buttsworth</p>
+  </div>
+  <div class="hero-right" style="position:relative;overflow:hidden">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80" alt="Barcelona" style="width:100%;height:100%;object-fit:cover;display:block">
+    <div style="position:absolute;inset:0;background:rgba(244,241,235,0.1)"></div>
+    <div class="stat-grid">
+      <div class="stat-box"><div class="stat-num">20</div><div class="stat-label">Days</div></div>
+      <div class="stat-box"><div class="stat-num">7</div><div class="stat-label">Cities</div></div>
+      <div class="stat-box"><div class="stat-num">$50K</div><div class="stat-label">Budget AUD</div></div>
+      <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">Countries</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 1 -->
+<div class="section" id="destinations">
+  <div class="section-header"><span class="section-num">Step 1</span><h2 class="section-title">Destinations</h2></div>
+  <div class="section-body">
+
+    <div class="dest-grid">
+      <div class="dest-col">
+        <img class="dest-col-img" src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=400&q=80" alt="Barcelona">
+        <div class="dest-col-num">01 / 04</div>
+        <div class="dest-col-name">Barcelona</div>
+        <div class="dest-col-country">Spain</div>
+        <span class="dest-col-days">Days 1–5</span>
+        <ul class="reason-list">
+          <li>Gaudi's architecture — Sagrada Familia, Park Güell — unlike anything else in Europe</li>
+          <li>Warm Mediterranean climate, good for sightseeing and being outside all day</li>
+          <li>Incredible food scene — tapas, paella, La Boqueria market</li>
+        </ul>
+      </div>
+      <div class="dest-col">
+        <img class="dest-col-img" src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=400&q=80" alt="Rome">
+        <div class="dest-col-num">02 / 04</div>
+        <div class="dest-col-name">Rome</div>
+        <div class="dest-col-country">Italy</div>
+        <span class="dest-col-days">Days 6–10</span>
+        <ul class="reason-list">
+          <li>Ancient history — Colosseum, Vatican City, Roman Forum — history you walk through</li>
+          <li>Authentic Italian food in its home country at actual quality</li>
+          <li>Dense with things to see — 4 days barely covers the major sites</li>
+        </ul>
+      </div>
+      <div class="dest-col">
+        <img class="dest-col-img" src="https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=400&q=80" alt="Interlaken">
+        <div class="dest-col-num">03 / 04</div>
+        <div class="dest-col-name">Interlaken</div>
+        <div class="dest-col-country">Switzerland</div>
+        <span class="dest-col-days">Days 11–14</span>
+        <ul class="reason-list">
+          <li>Alpine mountain scenery completely unlike any other part of Europe</li>
+          <li>Safe, well-organised country — easy to navigate as tourists</li>
+          <li>Jungfraujoch railway and mountain hiking are one-of-a-kind experiences</li>
+        </ul>
+      </div>
+      <div class="dest-col">
+        <img class="dest-col-img" src="https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?w=400&q=80" alt="Amsterdam">
+        <div class="dest-col-num">04 / 04</div>
+        <div class="dest-col-name">Amsterdam</div>
+        <div class="dest-col-country">Netherlands</div>
+        <span class="dest-col-days">Days 15–20</span>
+        <ul class="reason-list">
+          <li>Canal ring is one of the most visually distinct city layouts in the world</li>
+          <li>Bike-friendly infrastructure — cheapest and easiest city to get around</li>
+          <li>Anne Frank House and Rijksmuseum are among the most significant museums in Europe</li>
+        </ul>
+      </div>
+    </div>
+
+    <span class="sub-label">Climate & Best Time to Travel</span>
+    <div class="climate-grid">
+      <div class="climate-item">
+        <div class="climate-city">Barcelona</div>
+        <div class="climate-best">Best: Apr–Jun / Sep–Oct</div>
+        <div class="climate-desc">Mediterranean climate — hot and dry in summer (30°C+), mild in spring and autumn (18–25°C). Spring avoids the worst heat and the massive July/August tourist crowds. Outdoor sightseeing is comfortable all day.</div>
+      </div>
+      <div class="climate-item">
+        <div class="climate-city">Rome</div>
+        <div class="climate-best">Best: Apr–May / Sep–Oct</div>
+        <div class="climate-desc">Also Mediterranean but more humid in summer. Spring hits the sweet spot — clear skies, 20–26°C, and far fewer tourists than peak season. Avoid July and August — hot, crowded and expensive.</div>
+      </div>
+      <div class="climate-item">
+        <div class="climate-city">Interlaken</div>
+        <div class="climate-best">Best: Jun–Sep</div>
+        <div class="climate-desc">Alpine climate — snow in winter, warm and lush in summer. June to September gives clear mountain views, ideal hiking conditions and daytime temps around 20–25°C. Winter is for skiing, not sightseeing.</div>
+      </div>
+      <div class="climate-item">
+        <div class="climate-city">Amsterdam</div>
+        <div class="climate-best">Best: Apr–May / Sep</div>
+        <div class="climate-desc">Temperate maritime — mild but unpredictable. April to May is tulip season with pleasant temps around 15–18°C. Pack a rain jacket no matter when you go. Summers are warm (~20°C) but can still be rainy.</div>
+      </div>
+    </div>
+
+    <span class="sub-label">Currency</span>
+    <div class="currency-row">
+      <div class="currency-item"><div class="currency-code">EUR</div><div class="currency-city">Spain</div><div class="currency-note">Tap-to-pay accepted almost everywhere in Barcelona.</div></div>
+      <div class="currency-item"><div class="currency-code">EUR</div><div class="currency-city">Italy</div><div class="currency-note">Cards work in most places but smaller trattorias can be cash only.</div></div>
+      <div class="currency-item"><div class="currency-code">CHF</div><div class="currency-city">Switzerland</div><div class="currency-note">Not in the EU — separate currency. Everything is more expensive here.</div></div>
+      <div class="currency-item"><div class="currency-code">EUR</div><div class="currency-city">Netherlands</div><div class="currency-note">Extremely cashless — many places don't accept cash at all anymore.</div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FLIGHTS -->
+<div class="section" id="flights">
+  <div class="section-header"><span class="section-num">Step 1 cont.</span><h2 class="section-title">Flights</h2></div>
+  <div class="section-body">
+    <p style="font-size:0.85rem;color:#666;margin-bottom:1.5rem;font-style:italic">Route: Sydney → Barcelona (outbound) · Amsterdam → Sydney (return). Internal city transfers researched separately.</p>
+    <div class="flights-grid">
+      <div class="flight-card">
+        <span class="flight-badge">Outbound — Option 1</span>
+        <div class="flight-route">SYD → BCN</div>
+        <div class="flight-airline">Qatar Airways via Doha (DOH)</div>
+        <dl class="flight-meta">
+          <div><dt>Price per person</dt><dd>~$1,800–$2,200 AUD</dd></div>
+          <div><dt>Travel time</dt><dd>~24 hours</dd></div>
+          <div><dt>Layover</dt><dd>Doha, Qatar</dd></div>
+          <div><dt>Stops</dt><dd>1</dd></div>
+        </dl>
+        <div class="pro-con">
+          <div class="pro">Highly rated airline, smooth connections through Hamad International Airport</div>
+          <div class="con">One layover adds time; Doha hub is busy during peak periods</div>
+        </div>
+      </div>
+      <div class="flight-card">
+        <span class="flight-badge">Outbound — Option 2</span>
+        <div class="flight-route">SYD → BCN</div>
+        <div class="flight-airline">Emirates via Dubai (DXB)</div>
+        <dl class="flight-meta">
+          <div><dt>Price per person</dt><dd>~$1,900–$2,400 AUD</dd></div>
+          <div><dt>Travel time</dt><dd>~25 hours</dd></div>
+          <div><dt>Layover</dt><dd>Dubai, UAE</dd></div>
+          <div><dt>Stops</dt><dd>1</dd></div>
+        </dl>
+        <div class="pro-con">
+          <div class="pro">Excellent service and entertainment, frequent daily departures from Sydney</div>
+          <div class="con">Slightly longer flight and marginally pricier than Qatar</div>
+        </div>
+      </div>
+      <div class="flight-card">
+        <span class="flight-badge">Return — Option 1</span>
+        <div class="flight-route">AMS → SYD</div>
+        <div class="flight-airline">KLM via Singapore (SIN)</div>
+        <dl class="flight-meta">
+          <div><dt>Price per person</dt><dd>~$1,700–$2,000 AUD</dd></div>
+          <div><dt>Travel time</dt><dd>~23 hours</dd></div>
+          <div><dt>Layover</dt><dd>Singapore</dd></div>
+          <div><dt>Stops</dt><dd>1</dd></div>
+        </dl>
+        <div class="pro-con">
+          <div class="pro">Top-rated European carrier; Amsterdam Schiphol is one of Europe's best airports</div>
+          <div class="con">Singapore layover timing varies and can be lengthy</div>
+        </div>
+      </div>
+      <div class="flight-card">
+        <span class="flight-badge">Return — Option 2</span>
+        <div class="flight-route">AMS → SYD</div>
+        <div class="flight-airline">Singapore Airlines via Singapore (SIN)</div>
+        <dl class="flight-meta">
+          <div><dt>Price per person</dt><dd>~$1,800–$2,200 AUD</dd></div>
+          <div><dt>Travel time</dt><dd>~22 hours</dd></div>
+          <div><dt>Layover</dt><dd>Singapore</dd></div>
+          <div><dt>Stops</dt><dd>1</dd></div>
+        </dl>
+        <div class="pro-con">
+          <div class="pro">Consistently rated world's best airline — premium experience even in economy</div>
+          <div class="con">Slightly more expensive than KLM with similar routing</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="section" id="accommodation">
+  <div class="section-header"><span class="section-num">Step 2</span><h2 class="section-title">Accommodation & Activities</h2></div>
+
+  <!-- BARCELONA -->
+  <div class="dest-sep"><div><div class="dest-sep-name">Barcelona, Spain</div><div class="dest-sep-meta">Days 1–5 · 4 nights</div></div></div>
+  <div class="section-body">
+    <div class="two-col">
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80" alt="Hotel Arts Barcelona">
+        <div class="card-inner">
+          <div class="card-label">Accommodation Option 1</div>
+          <div class="card-title">Hotel Arts Barcelona</div>
+          <div class="card-price">~$350–$500 AUD per night</div>
+          <div class="card-body">5-star beachfront hotel in Port Olímpic. Rooftop pool and Michelin-starred restaurant. The nicest place you could stay in Barcelona, which is why it costs that much.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80" alt="Casa Camper Barcelona">
+        <div class="card-inner">
+          <div class="card-label">Accommodation Option 2</div>
+          <div class="card-title">Casa Camper Barcelona</div>
+          <div class="card-price">~$200–$280 AUD per night</div>
+          <div class="card-body">4-star boutique hotel in El Raval, walking distance from La Boqueria and Las Ramblas. Free 24/7 snack bar. Better value than Option 1 and still very central.</div>
+        </div>
+      </div>
+    </div>
+    <span class="sub-label">What to Do</span>
+    <div class="act-grid">
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=400&q=80" alt="Sagrada Familia">
+        <div class="act-name">Sagrada Família</div><div class="act-cost">~$40 AUD per person</div>
+        <div class="act-desc">Gaudi's famous unfinished church. Book tickets online beforehand otherwise you're waiting in a massive queue for no reason.</div>
+      </div>
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1562883676-8c7feb83f09b?w=400&q=80" alt="Park Guell">
+        <div class="act-name">Park Güell</div><div class="act-cost">~$16 AUD per person</div>
+        <div class="act-desc">Colourful mosaic park with views over the city. Timed entry so book in advance. Best in morning light.</div>
+      </div>
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1511527661048-7fe73d85e9a4?w=400&q=80" alt="Gothic Quarter">
+        <div class="act-name">Gothic Quarter</div><div class="act-cost">Free</div>
+        <div class="act-desc">Medieval streets, Barcelona Cathedral, Plaça Reial. Go early morning before it gets crowded — completely different experience.</div>
+      </div>
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&q=80" alt="La Boqueria">
+        <div class="act-name">La Boqueria Market</div><div class="act-cost">Free entry (~$30 to eat)</div>
+        <div class="act-desc">Famous covered market on Las Ramblas. Fresh seafood, jamón, fruit juice. Get there before 10am.</div>
+      </div>
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?w=400&q=80" alt="Camp Nou">
+        <div class="act-name">Camp Nou Tour</div><div class="act-cost">~$50 AUD per person</div>
+        <div class="act-desc">FC Barcelona's stadium. Worth going even if you're not that into football — the scale of the place is impressive.</div>
+      </div>
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1515443961218-a51367888e4b?w=400&q=80" alt="Tapas">
+        <div class="act-name">Tapas Dinner — Eixample</div><div class="act-cost">~$60–$80 for 2</div>
+        <div class="act-desc">Patatas bravas, croquetas, sangria. The Eixample neighbourhood has much better tapas bars than the tourist areas.</div>
+      </div>
+    </div>
+    <span class="sub-label">Getting Around</span>
+    <div class="transport-row">
+      <div class="transport-item">
+        <span class="transport-tag">Option 1</span>
+        <div class="transport-name">Metro — T-Casual Card</div>
+        <div class="transport-cost">~$25 AUD per 10-trip card</div>
+        <div class="pro-con"><div class="pro">Fast, air-conditioned, covers all main spots</div><div class="con">Crowded at peak hours, limited coastal coverage</div></div>
+      </div>
+      <div class="transport-item">
+        <span class="transport-tag">Option 2</span>
+        <div class="transport-name">Rental Bike</div>
+        <div class="transport-cost">~$10–$15 AUD per day</div>
+        <div class="pro-con"><div class="pro">Good for coast and parks, flexible and scenic</div><div class="con">Main road traffic is hectic, not great with luggage</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROME -->
+  <div class="dest-sep"><div><div class="dest-sep-name">Rome, Italy</div><div class="dest-sep-meta">Days 6–10 · 4 nights</div></div></div>
+  <div class="section-body">
+    <div class="two-col">
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80" alt="Hotel de Russie">
+        <div class="card-inner">
+          <div class="card-label">Accommodation Option 1</div>
+          <div class="card-title">Hotel de Russie</div>
+          <div class="card-price">~$600–$800 AUD per night</div>
+          <div class="card-body">Legendary 5-star near the Spanish Steps. Terraced gardens, world-class spa. Very expensive but one of the most famous hotels in Rome.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="Hotel Campo de Fiori">
+        <div class="card-inner">
+          <div class="card-label">Accommodation Option 2</div>
+          <div class="card-title">Hotel Campo de' Fiori</div>
+          <div class="card-price">~$160–$220 AUD per night</div>
+          <div class="card-body">3-star with a rooftop terrace in one of Rome's best neighbourhoods. Much more affordable with a great location for walking to everything.</div>
+        </div>
+      </div>
+    </div>
+    <span class="sub-label">What to Do</span>
+    <div class="act-grid">
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=400&q=80" alt="Colosseum">
+        <div class="act-name">Colosseum & Roman Forum</div><div class="act-cost">~$25 AUD pp (combined)</div>
+        <div class="act-desc">Ancient Roman history you can physically walk through. Book online or the queue is 2+ hours.</div>
+      </div>
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=400&q=80" alt="Vatican">
+        <div class="act-name">Vatican & Sistine Chapel</div><div class="act-cost">~$40 AUD per person</div>
+        <div class="act-desc">Michelangelo's ceiling is genuinely impressive in person. St Peter's Basilica is free. Book early entry.</div>
+      </div>
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=400&q=80" alt="Trevi Fountain">
+        <div class="act-name">Trevi Fountain</div><div class="act-cost">Free</div>
+        <div class="act-desc">Go at 6am if you want a photo without 300 people in it. Still worth doing.</div>
+      </div>
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1529260830199-42c24126f198?w=400&q=80" alt="Pantheon">
+        <div class="act-name">Pantheon</div><div class="act-cost">~$7 AUD per person</div>
+        <div class="act-desc">2,000 year old building with a hole in the roof. One of the most impressive things in Rome.</div>
+      </div>
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=80" alt="Tonnarello">
+        <div class="act-name">Tonnarello, Trastevere</div><div class="act-cost">~$60–$80 for 2</div>
+        <div class="act-desc">Classic Roman trattoria — carbonara, tiramisu, outdoor cobblestone seating. No reservations, just get there early.</div>
+      </div>
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&q=80" alt="Gelato">
+        <div class="act-name">Gelato Tour</div><div class="act-cost">~$5–$8 per gelato</div>
+        <div class="act-desc">Look for "artigianale" signs. Avoid anywhere near the major tourist spots with fluorescent piles of it.</div>
+      </div>
+    </div>
+    <span class="sub-label">Getting Around</span>
+    <div class="transport-row">
+      <div class="transport-item">
+        <span class="transport-tag">Option 1</span>
+        <div class="transport-name">Walking + Metro</div>
+        <div class="transport-cost">Free to walk · ~$2 AUD per metro trip</div>
+        <div class="pro-con"><div class="pro">Historic centre is best on foot; Metro Line A covers main sites</div><div class="con">Only 2 metro lines, limited coverage; gets very hot in summer</div></div>
+      </div>
+      <div class="transport-item">
+        <span class="transport-tag">Option 2</span>
+        <div class="transport-name">Tram & Bus Network</div>
+        <div class="transport-cost">~$1.50 AUD per trip (100-min ticket)</div>
+        <div class="pro-con"><div class="pro">Covers areas the metro doesn't reach including Trastevere</div><div class="con">Slow in traffic, confusing for first-timers to navigate</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERLAKEN -->
+  <div class="dest-sep"><div><div class="dest-sep-name">Interlaken, Switzerland</div><div class="dest-sep-meta">Days 11–14 · 3 nights</div></div></div>
+  <div class="section-body">
+    <div class="two-col">
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Victoria Jungfrau">
+        <div class="card-inner">
+          <div class="card-label">Accommodation Option 1</div>
+          <div class="card-title">Victoria-Jungfrau Grand Hotel</div>
+          <div class="card-price">~$650–$900 AUD per night</div>
+          <div class="card-body">Famous 5-star hotel since 1865. Direct Jungfrau mountain views and its own Alpine spa. The most well-known hotel in Interlaken by a long way.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=600&q=80" alt="Backpackers Villa">
+        <div class="card-inner">
+          <div class="card-label">Accommodation Option 2</div>
+          <div class="card-title">Backpackers Villa Sonnenhof</div>
+          <div class="card-price">~$60–$90 AUD per night</div>
+          <div class="card-body">Hostel with private rooms, mountain views from breakfast, highly rated. The smart budget pick — money saved here goes toward the Jungfraujoch trip.</div>
+        </div>
+      </div>
+    </div>
+    <span class="sub-label">What to Do</span>
+    <div class="act-grid">
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=400&q=80" alt="Jungfraujoch">
+        <div class="act-name">Jungfraujoch</div><div class="act-cost">~$250 AUD per person</div>
+        <div class="act-desc">Highest railway station in Europe at 3,454m. Snow year-round, glacier views, observatory at the top. Expensive but nothing else like it.</div>
+      </div>
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" alt="Harder Kulm">
+        <div class="act-name">Harder Kulm</div><div class="act-cost">~$50 AUD per person</div>
+        <div class="act-desc">Funicular up to a panoramic viewpoint over Interlaken and both lakes. Really good at sunset.</div>
+      </div>
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&q=80" alt="Lake Brienz">
+        <div class="act-name">Lake Brienz Cruise</div><div class="act-cost">~$40 AUD per person</div>
+        <div class="act-desc">The water is genuinely bright turquoise from glacial minerals. Goes past a waterfall at Giessbach.</div>
+      </div>
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80" alt="Hiking">
+        <div class="act-name">Schynige Platte Hike</div><div class="act-cost">~$60 AUD pp (cog railway)</div>
+        <div class="act-desc">Ridge walk through wildflower meadows with views of the Eiger and Jungfrau. 6km loop.</div>
+      </div>
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=400&q=80" alt="Fondue">
+        <div class="act-name">Fondue Dinner</div><div class="act-cost">~$100–$130 for 2</div>
+        <div class="act-desc">Traditional Swiss cheese fondue and raclette with a mountain view. Restaurant Alpenblick is a good spot.</div>
+      </div>
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=400&q=80" alt="Paragliding">
+        <div class="act-name">Paragliding</div><div class="act-cost">~$250–$300 AUD per person</div>
+        <div class="act-desc">Tandem paragliding from Beatenberg over the valley. Optional but one of the best spots in Europe to do it.</div>
+      </div>
+    </div>
+    <span class="sub-label">Getting Around</span>
+    <div class="transport-row">
+      <div class="transport-item">
+        <span class="transport-tag">Option 1</span>
+        <div class="transport-name">Swiss Travel Pass</div>
+        <div class="transport-cost">~$350 AUD for a 3-day pass</div>
+        <div class="pro-con"><div class="pro">Unlimited trains, buses, most mountain railways + Jungfraujoch discounts</div><div class="con">Expensive upfront; not worth it if you're not travelling around much</div></div>
+      </div>
+      <div class="transport-item">
+        <span class="transport-tag">Option 2</span>
+        <div class="transport-name">Local Bus + Walking</div>
+        <div class="transport-cost">~$5–$10 AUD per trip</div>
+        <div class="pro-con"><div class="pro">Interlaken town is very walkable; PostBus reaches valley villages</div><div class="con">Mountain excursions still need separate expensive tickets</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AMSTERDAM -->
+  <div class="dest-sep"><div><div class="dest-sep-name">Amsterdam, Netherlands</div><div class="dest-sep-meta">Days 15–20 · 5 nights</div></div></div>
+  <div class="section-body">
+    <div class="two-col">
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="Waldorf Astoria Amsterdam">
+        <div class="card-inner">
+          <div class="card-label">Accommodation Option 1</div>
+          <div class="card-title">Waldorf Astoria Amsterdam</div>
+          <div class="card-price">~$700–$1,000 AUD per night</div>
+          <div class="card-body">Six restored 17th-century canal buildings on the Herengracht. Butler service, Michelin-starred restaurant, private canal terrace. Extremely expensive but included as a comparison.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80" alt="Hotel V Nesplein">
+        <div class="card-inner">
+          <div class="card-label">Accommodation Option 2</div>
+          <div class="card-title">Hotel V Nesplein</div>
+          <div class="card-price">~$180–$250 AUD per night</div>
+          <div class="card-body">Stylish 4-star near Spui square. Modern rooms, walkable to the Rijksmuseum and main canals. Best mid-range option in Amsterdam.</div>
+        </div>
+      </div>
+    </div>
+    <span class="sub-label">What to Do</span>
+    <div class="act-grid">
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?w=400&q=80" alt="Anne Frank House">
+        <div class="act-name">Anne Frank House</div><div class="act-cost">~$20 AUD per person</div>
+        <div class="act-desc">The actual hiding place where Anne Frank wrote her diary. Book weeks ahead — sells out constantly. One of the most important museums in Europe.</div>
+      </div>
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1580136579312-94651dfd596d?w=400&q=80" alt="Rijksmuseum">
+        <div class="act-name">Rijksmuseum</div><div class="act-cost">~$30 AUD per person</div>
+        <div class="act-desc">Dutch Golden Age art — Rembrandt's Night Watch, Vermeer. Impressive even if you're not an art person just because of the scale.</div>
+      </div>
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Canal tour">
+        <div class="act-name">Canal Boat Tour</div><div class="act-cost">~$25 AUD per person</div>
+        <div class="act-desc">1-hour cruise through the UNESCO canal ring. Good way to see the city layout on the first day.</div>
+      </div>
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1504150558240-0b4fd8946624?w=400&q=80" alt="Cycling Amsterdam">
+        <div class="act-name">Rent a Bike</div><div class="act-cost">~$15 AUD per day</div>
+        <div class="act-desc">How locals actually get around. Dedicated bike lanes everywhere, very safe and easy to use.</div>
+      </div>
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=400&q=80" alt="Jordaan">
+        <div class="act-name">Jordaan District</div><div class="act-cost">Free</div>
+        <div class="act-desc">The most scenic part of Amsterdam. Narrow canals, independent shops and the best traditional brown cafes.</div>
+      </div>
+      <div class="act-item">
+        <img class="act-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80" alt="Dutch food">
+        <div class="act-name">Dutch Food</div><div class="act-cost">~$20–$30 for 2</div>
+        <div class="act-desc">Try broodjes with herring or Dutch pancakes at a traditional spot. More interesting than expected.</div>
+      </div>
+    </div>
+    <span class="sub-label">Getting Around</span>
+    <div class="transport-row">
+      <div class="transport-item">
+        <span class="transport-tag">Option 1</span>
+        <div class="transport-name">Bicycle Rental</div>
+        <div class="transport-cost">~$15 AUD per day / ~$75 for 5 days</div>
+        <div class="pro-con"><div class="pro">Fastest way around the city, bike lanes everywhere, very cheap</div><div class="con">Bike theft is common so need two locks; not great in heavy rain</div></div>
+      </div>
+      <div class="transport-item">
+        <span class="transport-tag">Option 2</span>
+        <div class="transport-name">GVB Tram & Metro</div>
+        <div class="transport-cost">~$35 AUD for a 72hr pass</div>
+        <div class="pro-con"><div class="pro">Good network, easy tap-on system, runs through the historic centre</div><div class="con">Slower than cycling for short distances, packed in tourist season</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="section" id="planning">
+  <div class="section-header"><span class="section-num">Step 3</span><h2 class="section-title">Key Considerations</h2></div>
+  <div class="section-body">
+    <div class="consider-grid">
+      <div class="consider-card">
+        <div class="consider-icon">🛂</div>
+        <div class="consider-title">Official Documents</div>
+        <div class="consider-body">A valid Australian passport is required to enter all four countries. Your passport needs at least 6 months validity left after your return date — renew it early as Australian passports take around 4 to 6 weeks to process.<br><br>Spain, Italy, Switzerland and the Netherlands are all Schengen Area countries, meaning Australian citizens can enter without a visa for up to 90 days. However, from late 2025 the EU is introducing ETIAS — a travel authorisation that costs around €7 and must be applied for online before travelling. It is not a visa but it is required.<br><br>Always carry both physical and digital copies of your passport and all booking confirmations, stored separately from the originals.</div>
+      </div>
+      <div class="consider-card">
+        <div class="consider-icon">🛡️</div>
+        <div class="consider-title">Travel Insurance</div>
+        <div class="consider-body">Travel insurance should be purchased as soon as flights are booked, not right before departure. If something goes wrong beforehand — a medical emergency or cancelled flight — you are only covered from the date the policy was purchased.<br><br>The policy needs to cover medical emergencies, trip cancellation or interruption, lost or stolen luggage and flight delays. Healthcare in Europe is expensive without insurance, especially in Switzerland.<br><br>Australian providers like Cover-More, 1Cover and Allianz offer comprehensive international policies. For 20 days in Europe expect to pay around $150–$250 AUD per person. Register your trip at <strong>smartraveller.gov.au</strong>.</div>
+      </div>
+      <div class="consider-card">
+        <div class="consider-icon">🌍</div>
+        <div class="consider-title">Language & Culture</div>
+        <div class="consider-body">Each destination has different languages and cultural expectations worth knowing before you arrive.<br><br><strong>Barcelona:</strong> Spanish and Catalan spoken. Learning "gracias" and "por favor" goes a long way. English is widely spoken in tourist areas.<br><br><strong>Rome:</strong> Dress codes matter — cover shoulders and knees to enter the Vatican and most churches or you won't be allowed in.<br><br><strong>Interlaken:</strong> German-speaking region. Punctuality is serious — trains leave exactly on time.<br><br><strong>Amsterdam:</strong> Nearly everyone speaks fluent English. Respect bike lanes — walking in them genuinely frustrates locals and can be dangerous.</div>
+      </div>
+    </div>
+
+    <div class="finance-box">
+      <div class="finance-box-title">Financial Trouble Overseas</div>
+      <dl class="finance-grid">
+        <div class="finance-item">
+          <dt>Common Problems</dt>
+          <dd>Card stolen or skimmed at an ATM, unexpected overseas transaction fees, dynamic currency conversion scams where a merchant charges you in AUD at a much worse rate, running out of money from underestimating costs — Switzerland is significantly more expensive than the other cities. Medical emergencies without insurance can also create very large unexpected bills.</dd>
+        </div>
+        <div class="finance-item">
+          <dt>What To Do</dt>
+          <dd>Contact your bank immediately to freeze stolen cards through their app. Always carry a backup card stored separately — a <strong>Wise card</strong> is a good option with low foreign transaction fees. Keep emergency cash in your hotel safe. Tell your bank your travel dates before you leave, otherwise overseas spending can trigger an automatic account freeze.</dd>
+        </div>
+        <div class="finance-item">
+          <dt>Who To Contact</dt>
+          <dd>The <strong>Australian Embassy or Consulate</strong> is the main contact. Spain: +34 91 353 6600. Italy: +39 06 852721. Netherlands: +31 70 310 8200. They assist with lost passports, medical situations and can help organise emergency funds through family.<br><br><strong>Smartraveller 24/7 line:</strong> +61 2 6261 3305 — can be called from overseas any time.</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4 ITINERARY -->
+<div class="section" id="itinerary">
+  <div class="section-header"><span class="section-num">Step 4</span><h2 class="section-title">Itinerary & Map</h2></div>
+  <div class="section-body">
+
+    <span class="sub-label" style="margin-bottom:1rem">Map of Destinations</span>
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m40!1m8!1m3!1d11295223.44573!2d9.2!3d46.5!3m2!1i1024!2i768!4f13.1!4m29!3e0!4m5!1s0x12a49816718e30e5%3A0x4a85ceabc052e7b0!2sBarcelona%2C%20Spain!3m2!1d41.3850639!2d2.1734035!4m5!1s0x132f6196f9928ebb%3A0xb90f770693656abf!2sRome%2C%20Metropolitan%20City%20of%20Rome!3m2!1d41.9027835!2d12.4963655!4m5!1s0x478fa604b5017293%3A0x2e21d9b07e0!2sInterlaken%2C%20Switzerland!3m2!1d46.6863397!2d7.8632069!4m5!1s0x47c63fb5949a7755%3A0x6600fd4cb7c0af8d!2sAmsterdam%2C%20Netherlands!3m2!1d52.3675734!2d4.9041389!5e0!3m2!1sen!2sau!4v1718500000000!5m2!1sen!2sau"
+        allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+
+    <table class="day-table">
+      <thead><tr><th style="width:70px">Day</th><th style="width:200px">Location & Stay</th><th>Activities</th></tr></thead>
+      <tbody>
+        <tr class="row-transit"><td class="day-num">25 Apr</td><td><div class="day-loc">Madrid</div><div class="day-hotel">U-Sense Madrid Santa Ana</div></td><td class="day-acts">Arrive Madrid. Check in to U-Sense Madrid Santa Ana. Walk the Puerta del Sol and Plaza Mayor. Dinner in the La Latina tapas district.</td></tr>
+        <tr class="row-bcn"><td class="day-num">26 Apr</td><td><div class="day-loc">Madrid</div><div class="day-hotel">U-Sense Madrid Santa Ana · $1,476</div></td><td class="day-acts">Prado Museum — one of the world's great art collections. Afternoon at Retiro Park. Evening at the Mercado de San Miguel.</td></tr>
+        <tr class="row-bcn"><td class="day-num">27 Apr</td><td><div class="day-loc">Madrid → Ibiza</div><div class="day-hotel">The Ibiza Twiins 4* · $673</div></td><td class="day-acts">Fly Madrid → Ibiza ($1,194). Check in to The Ibiza Twiins. Explore Ibiza Old Town (Dalt Vila) — UNESCO World Heritage site. Sunset at Café del Mar.</td></tr>
+        <tr class="row-bcn"><td class="day-num">28 Apr</td><td><div class="day-loc">Ibiza → Menorca</div><div class="day-hotel">Calallonga Hotel Menorca · $333</div></td><td class="day-acts">Boat to Menorca ($805). Check in to Calallonga Hotel. Visit Cala Macarella beach. Explore the prehistoric Naveta des Tudons monument.</td></tr>
+        <tr class="row-bcn"><td class="day-num">29 Apr</td><td><div class="day-loc">Menorca → Barcelona</div><div class="day-hotel">Casa Elliot Hotel</div></td><td class="day-acts">Boat to Barcelona ($286). Check in to Casa Elliot Hotel. Walk Las Ramblas, explore the Gothic Quarter in the afternoon.</td></tr>
+        <tr class="row-bcn"><td class="day-num">30 Apr</td><td><div class="day-loc">Barcelona</div><div class="day-hotel">Casa Elliot Hotel · $574</div></td><td class="day-acts">Sagrada Família (pre-booked tickets). Park Güell timed entry. Tapas dinner in the Eixample neighbourhood.</td></tr>
+        <tr class="row-transit"><td class="day-num">1 May</td><td><div class="day-loc">Barcelona → Amsterdam</div><div class="day-hotel">NH Collection Amsterdam Barbizon Palace</div></td><td class="day-acts">Fly Barcelona → Amsterdam Business Class — Air France ($1,698). Hire car from Enterprise for 6 days — VW Passat Estate ($1,026). Check in, canal walk in the Jordaan district.</td></tr>
+        <tr class="row-amsterdam"><td class="day-num">2 May</td><td><div class="day-loc">Amsterdam</div><div class="day-hotel">NH Collection Amsterdam Barbizon Palace</div></td><td class="day-acts">Anne Frank House (pre-booked — sells out weeks in advance). Rijksmuseum in the afternoon. Canal boat tour at sunset.</td></tr>
+        <tr class="row-amsterdam"><td class="day-num">3 May</td><td><div class="day-loc">Utrecht</div><div class="day-hotel">NH Collection Amsterdam Barbizon Palace</div></td><td class="day-acts">Drive to Utrecht (~30 min). Dom Tower climb, canals and wharfside cafes. Medieval city centre walk. Return to Amsterdam for dinner.</td></tr>
+        <tr class="row-amsterdam"><td class="day-num">4 May</td><td><div class="day-loc">Delft</div><div class="day-hotel">NH Collection Amsterdam Barbizon Palace</div></td><td class="day-acts">Drive to Delft (~1hr). Nieuwe Kerk and Old Church, Royal Delft pottery factory tour. Traditional Dutch lunch in the town square. Return to Amsterdam.</td></tr>
+        <tr class="row-amsterdam"><td class="day-num">5 May</td><td><div class="day-loc">The Hague</div><div class="day-hotel">NH Collection Amsterdam Barbizon Palace</div></td><td class="day-acts">Drive to The Hague (~1hr). Mauritshuis Museum — Vermeer's Girl with a Pearl Earring. Binnenhof parliament buildings. Scheveningen beach. Return to Amsterdam.</td></tr>
+        <tr class="row-amsterdam"><td class="day-num">6 May</td><td><div class="day-loc">Haarlem</div><div class="day-hotel">NH Collection Amsterdam Barbizon Palace · $2,160</div></td><td class="day-acts">Drive to Haarlem (~20 min). Frans Hals Museum, Grote Markt square, Keukenhof tulip gardens nearby. Return Amsterdam for farewell dinner.</td></tr>
+        <tr class="row-transit"><td class="day-num">7 May</td><td><div class="day-loc">Amsterdam → Zurich</div><div class="day-hotel">EMA House Serviced Apartments Superior Unterstrass</div></td><td class="day-acts">Fly Amsterdam → Zurich Business Class — KLM Airways ($1,880). Hire car from Europcar for 6 days — VW Passat Estate. Check in, walk along Lake Zurich, Bahnhofstrasse shopping street.</td></tr>
+        <tr class="row-swiss"><td class="day-num">8 May</td><td><div class="day-loc">Zurich</div><div class="day-hotel">EMA House Serviced Apartments Superior Unterstrass</div></td><td class="day-acts">Old Town (Altstadt) — Grossmünster and Fraumünster churches. Swiss National Museum. Dinner in the Niederdorf district.</td></tr>
+        <tr class="row-swiss"><td class="day-num">9 May</td><td><div class="day-loc">Zurich</div><div class="day-hotel">EMA House Serviced Apartments Superior Unterstrass</div></td><td class="day-acts">Day at leisure in Zurich. Lake Zurich boat cruise. Lindt Home of Chocolate museum. Explore Zurich West neighbourhood.</td></tr>
+        <tr class="row-swiss"><td class="day-num">10 May</td><td><div class="day-loc">Uetliberg · Lucerne · Rapperswil</div><div class="day-hotel">EMA House Serviced Apartments Superior Unterstrass</div></td><td class="day-acts">Morning drive to Uetliberg — panoramic views over Zurich and the Alps. Afternoon in Lucerne — Chapel Bridge and Lion Monument. Evening in Rapperswil — medieval old town on Lake Zurich.</td></tr>
+        <tr class="row-swiss"><td class="day-num">11 May</td><td><div class="day-loc">Gelmersee · Oeschinensee</div><div class="day-hotel">EMA House Serviced Apartments Superior Unterstrass</div></td><td class="day-acts">Drive to Gelmersee — steep funicular up to a dramatic reservoir lake surrounded by cliffs. Afternoon at Oeschinensee — turquoise glacier lake near Kandersteg, accessible by gondola and short hike.</td></tr>
+        <tr class="row-swiss"><td class="day-num">12 May</td><td><div class="day-loc">Lake Thun · Giessbach Waterfall</div><div class="day-hotel">EMA House Serviced Apartments Superior Unterstrass · $2,362</div></td><td class="day-acts">Drive to Lake Thun — boat cruise with views of the Bernese Alps. Giessbach Waterfall near Lake Brienz — accessed by historic funicular, stunning cascade views. Return Zurich.</td></tr>
+        <tr class="row-transit"><td class="day-num">13 May</td><td><div class="day-loc">Zurich → Rome</div><div class="day-hotel">ELICAL Exclusive Private Suites · $505</div></td><td class="day-acts">Fly Zurich → Rome Business Class ($1,700). Check in to ELICAL Exclusive Private Suites. Evening walk — Trevi Fountain, Pantheon, Piazza Navona.</td></tr>
+        <tr class="row-rome"><td class="day-num">14 May</td><td><div class="day-loc">Rome → Sydney</div><div class="day-hotel">—</div></td><td class="day-acts">Morning — Colosseum and Roman Forum (pre-booked). Vatican Museums and Sistine Chapel. Transfer to airport. Fly Rome → Sydney — Singapore Airlines Premium Economy ($6,778). Arrive Sydney Day 21.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- BUDGET -->
+<div class="section" id="budget">
+  <div class="section-header"><span class="section-num">Step 4 cont.</span><h2 class="section-title">Budget</h2></div>
+  <div class="section-body">
+    <p style="font-size:0.82rem;color:#777;margin-bottom:1.25rem;font-style:italic">All figures in AUD. Full 20-day trip.</p>
+    <table class="budget-table">
+      <thead><tr><th>Item</th><th>Details</th><th>Cost</th></tr></thead>
+      <tbody>
+        <tr><td>Accommodation</td><td>U-Sense Madrid ($1,476) + The Ibiza Twiins ($673) + Calallonga Menorca ($333) + Casa Elliot Barcelona ($574) + NH Collection Amsterdam ($2,160) + EMA House Zurich ($2,362) + ELICAL Rome ($505)</td><td>$8,083</td></tr>
+        <tr><td>Travel / Transport</td><td>Madrid → Ibiza flight ($1,194) + Ibiza → Menorca boat ($805) + Menorca → Barcelona boat ($286) + BCN → AMS Business Class Air France ($1,698) + Amsterdam hire car 6 days ($1,026) + AMS → ZRH Business Class KLM ($1,880) + Zurich hire car 6 days (est. $900) + ZRH → FCO Business Class ($1,700) + FCO → SYD Singapore Airlines Premium Economy ($6,778)</td><td>$16,267</td></tr>
+        <tr><td>Food</td><td>~$80 AUD per person per day × 20 days</td><td>$3,200</td></tr>
+        <tr><td>Attractions</td><td>Entry fees across all cities — museums, tours, boat cruises, gondolas</td><td>$2,000</td></tr>
+        <tr><td>Insurance</td><td>Cover-More comprehensive travel insurance ~$200 per person</td><td>$400</td></tr>
+        <tr><td>Other</td><td>Souvenirs ($800) + SIM cards ($100) + Currency fees ($200) + Contingency ($950)</td><td>$2,050</td></tr>
+        <tr class="budget-total-row"><td colspan="2"><strong>Total Cost</strong></td><td><strong>$32,000</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="budget-remaining">Remaining budget: $50,000 − $32,000 = $18,000 AUD under budget. Includes business class flights and 4–5 star accommodation throughout.</div>
+  </div>
+</div>
+
+<!-- STEP 5 BROCHURE -->
+<div class="section" id="brochure">
+  <div class="section-header"><span class="section-num">Step 5</span><h2 class="section-title">Marketing Brochure</h2></div>
+  <div class="section-body">
+    <div class="brochure">
+      <div class="brochure-top">
+        <div>
+          <span class="brochure-tag">20 Days · 4 Cities · Europe</span>
+          <div class="brochure-title">EUROPE<br>TRIP</div>
+          <p class="brochure-tagline">Madrid, Ibiza, Menorca, Barcelona, Amsterdam, Zurich and Rome. Seven cities, 20 days, ancient ruins, Alpine lakes, Mediterranean islands and canal cities — fully planned and budgeted well under $50,000 AUD.</p>
+        </div>
+        <img class="brochure-img" src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=80" alt="Europe">
+      </div>
+      <div class="brochure-body">
+        <div class="brochure-left">
+          <div class="brochure-sub">Highlights</div>
+          <div class="highlight-row"><div class="highlight-n">01</div><div><div class="highlight-name">Madrid & Barcelona</div><div class="highlight-desc">Spain's two best cities back to back — the Prado Museum, Sagrada Familia, Gothic Quarter, La Boqueria and some of the best food in Europe.</div></div></div>
+          <div class="highlight-row"><div class="highlight-n">02</div><div><div class="highlight-name">Ibiza & Menorca</div><div class="highlight-desc">Two of the Balearic Islands in one trip — Ibiza's UNESCO Old Town and Menorca's unspoilt beaches and prehistoric monuments.</div></div></div>
+          <div class="highlight-row"><div class="highlight-n">03</div><div><div class="highlight-name">Amsterdam + Day Trips</div><div class="highlight-desc">Anne Frank House, Rijksmuseum and canal cruises in Amsterdam — plus Utrecht, Delft, The Hague and Haarlem by hire car.</div></div></div>
+          <div class="highlight-row"><div class="highlight-n">04</div><div><div class="highlight-name">Switzerland & Rome</div><div class="highlight-desc">Glacier lakes, mountain drives and waterfalls across Switzerland, then finishing in Rome — Colosseum, Vatican, Sistine Chapel.</div></div></div>
+        </div>
+        <div class="brochure-right">
+          <div class="brochure-sub">Why this trip</div>
+          <ul class="why-list">
+            <li>Seven cities across Spain, Netherlands, Switzerland and Italy in one logical 20-day route</li>
+            <li>Estimated cost of $32,000 AUD — $18,000 under the $50,000 budget including business class flights</li>
+            <li>Spring timing (April–June) gives good weather across all four cities at once</li>
+            <li>All four countries are safe and English-friendly — easy for first-time travellers</li>
+            <li>Covers ancient history, alpine nature, city life and world-class museums</li>
+            <li>No visa required for Australians — just a valid passport and ETIAS (~€7)</li>
+            <li>Two accommodation options researched at every price point for each city</li>
+            <li>Key travel considerations covered — insurance, documents, cultural tips, finance</li>
+          </ul>
+        </div>
+      </div>
+      <div class="brochure-footer">
+        <div class="brochure-cta">Madrid · Ibiza · Menorca · Barcelona · Amsterdam · Zurich · Rome</div>
+        <div class="brochure-meta">Roman Iori & Isaac Buttsworth · Commerce Year 10 · Holiday Travel Package</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>Roman Iori & Isaac Buttsworth</span>
+  <span>Commerce Year 10 — Holiday Travel Package · $50,000 AUD · 20 Days</span>
+</footer>
+
+</body>
+</html>
